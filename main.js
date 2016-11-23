@@ -1,7 +1,19 @@
 var todoList = {
 	items: [],
 	display: function() {
-		console.log('My To-Dos: ', this.items);
+		var itemsLen = this.items.length;
+		if (itemsLen === 0) {
+			console.log('Your To-Do list is empty!');
+		} else {
+			console.log('My To-Dos:');
+			for (var i=0; i < itemsLen; i++) {
+				if (this.items[i].completed) {
+					console.log("(x) ", this.items[i].value);	
+				} else {
+					console.log("( ) ", this.items[i].value);
+				}
+			}
+		}
 	},
 	add: function(value) {
 		this.items.push({
