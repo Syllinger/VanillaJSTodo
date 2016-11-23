@@ -33,5 +33,24 @@ var todoList = {
 	toggle: function(pos) {
 		this.items[pos].completed = !this.items[pos].completed;
 		this.display();
+	},
+	toggleAll: function() {
+		var itemsLen = this.items.length;
+		var itemsComplete = 0;
+
+		for (var i=0; i < itemsLen; i++) {
+			if (this.items[i].completed) {
+				itemsComplete++;
+			}
+		} 
+
+		for (var i=0; i < itemsLen; i++) {
+			if (itemsComplete === itemsLen) {
+				this.items[i].completed = false;
+			} else {
+				this.items[i].completed = true;
+			}
+		}
+		this.display();
 	}
 };
