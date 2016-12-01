@@ -55,12 +55,32 @@ var todoList = {
 	}
 };
 
-var displayBtn = document.getElementById('displayBtn');
-displayBtn.addEventListener('click', function() {
-	todoList.display();
-});
-
-var toggleAllBtn = document.getElementById('toggleAllBtn');
-toggleAllBtn.addEventListener('click', function() {
-	todoList.toggleAll();
-});
+var handlers = {
+	display: function() {
+		todoList.display();
+	},
+	add: function() {
+		var addInput = document.getElementById('addInput');
+		todoList.add(addInput.value);
+		addInput.value = '';
+	},
+	change: function() {
+		var changePosInput = document.getElementById('changePosInput');
+		var changeInput = document.getElementById('changeInput');
+		todoList.change(changePosInput.valueAsNumber, changeInput.value);
+		changePosInput.value = '';
+		changeInput.value = '';
+	},
+	delete:	function() {
+		var deletePosInput = document.getElementById('deletePosInput');
+		todoList.delete(deletePosInput.valueAsNumber);
+		deletePosInput.value = '';
+	},
+	toggle:	function() {
+		var togglePosInput = document.getElementById('togglePosInput');
+		todoList.toggle(togglePosInput.valueAsNumber);
+	},
+	toggleAll: function() {
+		todoList.toggleAll();
+	}
+};

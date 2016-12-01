@@ -8,8 +8,31 @@
   <body>
     <h1>To-Do List</h1>
 
-    <button id="displayBtn">Display To-Dos</button>
-    <button id="toggleAllBtn">Toggle All</button>
+    <div>
+      <button onclick="handlers.display()">Display To-Dos</button>
+      <button onclick="handlers.toggleAll()">Toggle All</button>
+    </div>
+
+    <div>
+      <input id="addInput" type="text">
+      <button onclick="handlers.add()">Add</button>
+    </div>
+
+    <div>
+      <input id="changePosInput" type="number">
+      <input id="changeInput" type="text">
+      <button onclick="handlers.change()">Change</button>
+    </div>
+
+    <div>
+      <input id="deletePosInput" type="number">
+      <button onclick="handlers.delete()">Delete</button>
+    </div>
+
+    <div>
+      <input id="togglePosInput" type="number">
+      <button onclick="handlers.toggle()">Toggle</button>
+    </div>
 
   </body>
   <script src="main.js"></script>
