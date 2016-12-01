@@ -54,3 +54,13 @@ var todoList = {
 		this.display();
 	}
 };
+
+var displayBtn = document.getElementById('displayBtn');
+displayBtn.addEventListener('click', function() {
+	todoList.display();
+});
+
+var toggleAllBtn = document.getElementById('toggleAllBtn');
+toggleAllBtn.addEventListener('click', function() {
+	todoList.toggleAll();
+});
