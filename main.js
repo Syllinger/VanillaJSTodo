@@ -19,19 +19,19 @@ var todoList = {
 		var itemsLen = this.items.length;
 		var itemsComplete = 0;
 
-		for (var i=0; i < itemsLen; i++) {
-			if (this.items[i].completed) {
+		this.items.forEach(function(item) {
+			if (item.completed) {
 				itemsComplete++;
 			}
-		}
+		});
 
-		for (var i=0; i < itemsLen; i++) {
+		this.items.forEach(function(item) {
 			if (itemsComplete === itemsLen) {
-				this.items[i].completed = false;
+				item.completed = false;
 			} else {
-				this.items[i].completed = true;
+				item.completed = true;
 			}
-		}
+		});
 	}
 };
 
@@ -70,24 +70,23 @@ var view = {
 		var listUL = document.querySelector('ul');
 		listUL.innerHTML = '';
 		var itemsLen = todoList.items.length;
-		for (var i=0; i < itemsLen; i++) {
+		todoList.items.forEach(function(item, index) { 
 			var itemLIOutput = '';
-			var todoItem = todoList.items[i];
 			var itemLI = document.createElement('li');
 			
-			if (todoItem.completed) {
+			if (item.completed) {
 				itemLIOutput = '(x) ';
 			} else {
 				itemLIOutput = '( ) ';
 			}
 
-			itemLI.id = i;
-			itemLI.textContent = itemLIOutput + todoItem.value;
-			itemLI.appendChild(this.addDeleteBtn());			
+			itemLI.id = index;
+			itemLI.textContent = itemLIOutput + item.value;
+			itemLI.appendChild(this.createDeleteBtn());			
 			listUL.appendChild(itemLI);
-		}
+		}, this);
 	},
-	addDeleteBtn: function() {
+	createDeleteBtn: function() {
 		var deleteBtn = document.createElement('button');
 		deleteBtn.textContent = 'Delete';
 		deleteBtn.className = 'deleteBtn';
